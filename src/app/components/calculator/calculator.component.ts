@@ -15,9 +15,25 @@ export class CalculatorComponent {
   operator: string | null = null;
   waitingForSecondOperand: boolean = false;
 
+  onClearClick(): void {
+    this.displayValue = '0';
+    this.firstOperand = null;
+    this.secondOperand = null;
+    this.operator = null;
+    this.waitingForSecondOperand = false;
+  }
+
   onDecimalClick(): void {
     if (!this.displayValue.includes('.')) {
       this.displayValue += '.';
+    }
+  }
+
+  onDeleteClick(): void {
+    if (this.displayValue.length > 1) {
+      this.displayValue = this.displayValue.slice(0, -1);
+    } else {
+      this.displayValue = '0';
     }
   }
 
@@ -31,17 +47,6 @@ export class CalculatorComponent {
     }
   }
 
-  onOperatorClick(operator: string): void {
-    if (this.firstOperand === null) {
-      this.firstOperand = parseFloat(this.displayValue);
-    } else if (this.operator && !this.waitingForSecondOperand) {
-      this.calculate();
-    }
-
-    this.operator = operator;
-    this.waitingForSecondOperand = true;
-  }
-
   onEqualClick(): void {
     if (
       this.firstOperand !== null &&
@@ -53,20 +58,15 @@ export class CalculatorComponent {
     }
   }
 
-  onClearClick(): void {
-    this.displayValue = '0';
-    this.firstOperand = null;
-    this.secondOperand = null;
-    this.operator = null;
-    this.waitingForSecondOperand = false;
-  }
-
-  onDeleteClick(): void {
-    if (this.displayValue.length > 1) {
-      this.displayValue = this.displayValue.slice(0, -1);
-    } else {
-      this.displayValue = '0';
+  onOperatorClick(operator: string): void {
+    if (this.firstOperand === null) {
+      this.firstOperand = parseFloat(this.displayValue);
+    } else if (this.operator && !this.waitingForSecondOperand) {
+      this.calculate();
     }
+
+    this.operator = operator;
+    this.waitingForSecondOperand = true;
   }
 
   private calculate(): void {
