@@ -48,14 +48,13 @@ export class CalculatorComponent {
   }
 
   onEqualClick(): void {
-    if (
-      this.firstOperand !== null &&
-      this.operator &&
-      !this.waitingForSecondOperand
-    ) {
+    if (this.firstOperand && this.operator && !this.waitingForSecondOperand) {
       this.calculate();
-      this.operator = null;
+    } else if (this.firstOperand && this.operator) {
+      this.calculate();
     }
+
+    this.operator = null;
   }
 
   onNegativeClick() {
