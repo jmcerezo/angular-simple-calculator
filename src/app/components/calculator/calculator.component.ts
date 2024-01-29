@@ -72,6 +72,9 @@ export class CalculatorComponent {
       this.firstOperand = parseFloat(this.displayValue);
     } else if (this.operator && !this.waitingForSecondOperand) {
       this.calculate();
+    } else if (this.operator && this.firstOperand) {
+      this.waitingForSecondOperand = false;
+      this.calculate();
     }
 
     this.operator = operator;
@@ -100,7 +103,12 @@ export class CalculatorComponent {
         return;
     }
 
-    this.displayValue = result.toString();
+    this.displayValue = '0';
     this.firstOperand = result;
+
+    if (Number.isNaN(result)) {
+      this.displayValue = '0';
+      this.firstOperand = null;
+    }
   }
 }
