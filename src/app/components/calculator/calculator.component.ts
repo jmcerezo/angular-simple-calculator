@@ -58,6 +58,15 @@ export class CalculatorComponent {
     }
   }
 
+  onNegativeClick() {
+    if (this.displayValue === '0') return;
+    else if (!this.displayValue.includes('-')) {
+      this.displayValue = '-' + this.displayValue;
+    } else {
+      this.displayValue = this.displayValue.slice(1);
+    }
+  }
+
   onOperatorClick(operator: string): void {
     if (this.firstOperand === null) {
       this.firstOperand = parseFloat(this.displayValue);

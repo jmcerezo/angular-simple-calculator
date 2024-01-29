@@ -150,6 +150,14 @@
           <div class="w-1/4">
             <button
               class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onNegativeClick()"
+            >
+              +/-
+            </button>
+          </div>
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
               (click)="onDigitClick('0')"
             >
               0
@@ -163,7 +171,7 @@
               .
             </button>
           </div>
-          <div class="w-2/4">
+          <div class="w-1/4">
             <button
               class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
               (click)="onEqualClick()"
