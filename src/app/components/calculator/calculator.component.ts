@@ -44,13 +44,13 @@ export class CalculatorComponent {
       this.displayValue = digit;
       this.waitingForSecondOperand = false;
     } else {
-      this.displayValue =
-        this.displayValue === '0' ? digit : this.displayValue + digit;
+      const value = this.displayValue + digit;
+      this.displayValue = this.displayValue === '0' ? digit : value;
     }
   }
 
   onEqualClick(): void {
-    if (this.firstOperand && this.operator) {
+    if (this.firstOperand !== null && this.operator !== null) {
       this.calculate();
     }
 
@@ -71,9 +71,9 @@ export class CalculatorComponent {
     if (!this.displayValueIsNaN()) {
       if (this.firstOperand === null) {
         this.firstOperand = parseFloat(this.displayValue);
-      } else if (this.operator && !this.waitingForSecondOperand) {
+      } else if (this.operator !== null && !this.waitingForSecondOperand) {
         this.calculate();
-      } else if (this.operator && this.firstOperand) {
+      } else if (this.operator !== null && this.firstOperand !== null) {
         this.waitingForSecondOperand = false;
         this.calculate();
       }
@@ -97,12 +97,10 @@ export class CalculatorComponent {
   }
 
   private calculate(): void {
-    this.secondOperand = parseFloat(this.displayValue);
-    if (isNaN(this.secondOperand)) this.displayError();
+    if (this.firstOperand !== null) {
+      this.secondOperand = parseFloat(this.displayValue);
+      let result: number;
 
-    let result: number;
-
-    if (this.firstOperand) {
       switch (this.operator) {
         case '+':
           result = this.firstOperand + this.secondOperand;
@@ -121,10 +119,11 @@ export class CalculatorComponent {
           return;
       }
 
-      this.displayValue = '0';
-      this.firstOperand = result;
-
       if (isNaN(result)) this.displayError();
+      else {
+        this.displayValue = '0';
+        this.firstOperand = result;
+      }
     }
   }
 }
