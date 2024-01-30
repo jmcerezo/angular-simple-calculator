@@ -1,1 +1,190 @@
-<app-calculator></app-calculator>
+<div
+  class="min-h-screen bg-gradient-to-b from-purple-950 to-pink-950 flex items-center justify-center px-5 py-5"
+>
+  <div
+    class="w-full max-w-sm mx-auto rounded-xl shadow-xl bg-rose-900 text-gray-800 relative overflow-hidden"
+  >
+    <h1 class="py-10 font-medium text-white text-center text-2xl">
+      {{ title }}
+    </h1>
+    <div
+      class="w-full h-auto bg-gradient-to-b from-gray-800 to-gray-700 text-right"
+    >
+      <div class="w-full px-6 py-5 text-white text-xl font-thin">
+        {{ firstOperand !== null ? firstOperand : "---" }}
+        {{ firstOperand !== null ? operator : "" }}
+      </div>
+      <div class="w-full px-6 py-5 text-white text-xl font-thin">
+        {{ displayValue }}
+      </div>
+      <div class="w-full bg-gradient-to-b from-gray-700 to-gray-800">
+        <div class="flex w-full">
+          <div class="w-2/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onClearClick()"
+            >
+              AC
+            </button>
+          </div>
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onDeleteClick()"
+            >
+              DEL
+            </button>
+          </div>
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onOperatorClick('/')"
+            >
+              /
+            </button>
+          </div>
+        </div>
+
+        <div class="flex w-full">
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onDigitClick('7')"
+            >
+              7
+            </button>
+          </div>
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onDigitClick('8')"
+            >
+              8
+            </button>
+          </div>
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onDigitClick('9')"
+            >
+              9
+            </button>
+          </div>
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onOperatorClick('*')"
+            >
+              *
+            </button>
+          </div>
+        </div>
+
+        <div class="flex w-full">
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onDigitClick('4')"
+            >
+              4
+            </button>
+          </div>
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onDigitClick('5')"
+            >
+              5
+            </button>
+          </div>
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onDigitClick('6')"
+            >
+              6
+            </button>
+          </div>
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onOperatorClick('-')"
+            >
+              -
+            </button>
+          </div>
+        </div>
+
+        <div class="flex w-full">
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onDigitClick('1')"
+            >
+              1
+            </button>
+          </div>
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onDigitClick('2')"
+            >
+              2
+            </button>
+          </div>
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onDigitClick('3')"
+            >
+              3
+            </button>
+          </div>
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onOperatorClick('+')"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        <div class="flex w-full">
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onNegativeClick()"
+            >
+              +/-
+            </button>
+          </div>
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onDigitClick('0')"
+            >
+              0
+            </button>
+          </div>
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onDecimalClick()"
+            >
+              .
+            </button>
+          </div>
+          <div class="w-1/4">
+            <button
+              class="w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light"
+              (click)="onEqualClick()"
+            >
+              =
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
