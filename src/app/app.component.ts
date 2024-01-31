@@ -35,6 +35,7 @@ export class AppComponent {
 
     if (this.displayValue.length > 1) {
       this.displayValue = this.displayValue.slice(0, -1);
+      if (this.displayValue === '-') this.displayValue = '0';
     } else {
       this.displayValue = '0';
     }
