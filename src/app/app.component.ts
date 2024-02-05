@@ -61,7 +61,7 @@ export class AppComponent {
     this.operator = null;
   }
 
-  onNegativeClick() {
+  onNegativeClick(): void {
     if (this.displayValueIsNaN() || this.displayValue === '0') return;
 
     this.displayValue = this.displayValue.includes('-')
