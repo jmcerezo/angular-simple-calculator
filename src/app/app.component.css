@@ -1,0 +1,31 @@
+.container {
+  @apply min-w-full min-h-screen px-5 py-5 flex items-center justify-center bg-gradient-to-b from-purple-950 to-pink-950;
+}
+
+.wrapper {
+  @apply w-full max-w-sm mx-auto rounded-xl shadow-xl relative overflow-hidden bg-rose-900 text-gray-800;
+}
+
+.title {
+  @apply text-white text-center text-2xl font-medium py-10;
+}
+
+.calculator {
+  @apply w-full h-auto text-right bg-gradient-to-b from-gray-800 to-gray-700;
+}
+
+.display {
+  @apply w-full px-5 py-5 text-white text-xl font-thin;
+}
+
+.button-container {
+  @apply w-full bg-gradient-to-b from-gray-700 to-gray-800;
+}
+
+.button-wrapper {
+  @apply flex w-full;
+}
+
+.button {
+  @apply w-full h-16 outline-none hover:bg-rose-800 hover:bg-opacity-50 text-white text-xl font-light;
+}
